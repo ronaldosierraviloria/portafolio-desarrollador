@@ -25,8 +25,6 @@ const { title } = Astro.props;
 
 		<script>
 			import { gsap } from "gsap";
-
-			// --- i18n Logic ---
 			const translations = {
 				es: {
 					nav_projects: "Proyectos",
@@ -46,7 +44,7 @@ const { title } = Astro.props;
 					about_title_1: "SOBRE",
 					about_title_2: "MÍ.",
 					about_p1:
-						"Analista de Datos Junior con experiencia en soluciones BI y automatización. Dominio de SQL, Leguanje de programacionPython, Microsoft Excel, Power BI, Google Looker Studio,Google Sheets, Estadistica y Amazon Web Services (AWS). Con experiencia en el desarrollo de procesos ETL (Extract, Transform, Load), procesamiento de datos e integracions desde diversas fuentes, y visualizacion de datos, creando Dashboards interactivos y funcionales.",
+						"Analista de Datos Junior con experiencia en soluciones BI y automatización. Dominio de SQL, Leguanje de programacion Python, Microsoft Excel, Power BI, Google Looker Studio,Google Sheets, Estadistica y Amazon Web Services (AWS). Con experiencia en el desarrollo de procesos ETL (Extract, Transform, Load), procesamiento de datos e integracions desde diversas fuentes y visualizacion de datos, creando Dashboards interactivos y funcionales.",
 					about_p2:
 						"Mi objetivo es conectar el mundo del Data Science con el Desarrollo de Software, creando productos que no solo sean visualmente impactantes, sino también funcionalmente robustos.",
 					about_exp: "Años Exp.",
@@ -290,6 +288,7 @@ const { title } = Astro.props;
 		/* Estilo de la barra de desplazamiento */
 		scrollbar-width: thin;
 		scrollbar-color: #ffffff #111111;
+		scroll-behavior: smooth;
 	}
 	html::-webkit-scrollbar {
 		width: 6px;
@@ -309,6 +308,7 @@ const { title } = Astro.props;
 		margin: 0;
 		min-height: 100vh;
 		overflow-x: hidden;
+		scroll-behavior: smooth;
 	}
 	.custom-cursor {
 		position: fixed;
