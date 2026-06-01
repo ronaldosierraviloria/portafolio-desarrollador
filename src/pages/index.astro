@@ -1,0 +1,209 @@
+---
+import "../styles/global.css";
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Marquee from "../components/Marquee.astro";
+import About from "../components/About.astro";
+import Skills from "../components/Skills.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
+import Contact from "../components/Contact.astro";
+---
+
+<MainLayout title="Ronaldo Sierra - Portfolio">
+    <Navbar />
+    <main>
+        <Hero />
+
+        <Marquee text1="Python - Excel" text2="Power Bi - SQL" />
+
+        <About />
+        <Skills />
+        <Experience />
+
+        <Projects />
+
+        <section
+            class="phrase-section py-8 overflow-hidden bg-transparent select-none relative z-20"
+        >
+            <div class="marquee-phrase-row flex whitespace-nowrap">
+                {
+                    Array.from({ length: 6 }).map(() => (
+                        <span class="text-[4vw] md:text-[5vw] font-bold font-sans uppercase leading-none px-6 text-[#e0e0e0]">
+                            "IT'S NEVER LUCK, IT'S ALWAYS GOD."{" "}
+                            <span class="text-[#e0e0e0]/50">—</span>
+                        </span>
+                    ))
+                }
+            </div>
+        </section>
+
+        <Contact />
+    </main>
+</MainLayout>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import Lenis from "lenis";
+
+    // Initialize Smooth Scroll
+    const lenis = new Lenis();
+
+    lenis.on("scroll", ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Entrance animation after preloader
+    window.addEventListener("page-loaded", () => {
+        const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+        // 1. Draw Hero Title SVG
+        tl.to(".drawing-text", {
+            strokeDashoffset: 0,
+            duration: 2.5,
+            ease: "power2.inOut",
+        });
+
+        // 1.2 Fill Hero Title SVG
+        tl.to(
+            ".drawing-text",
+            {
+                fill: "#e0e0e0",
+                duration: 1,
+                ease: "power1.inOut",
+            },
+            "-=1.2",
+        );
+
+        // 1.3 Show Star
+        tl.to(
+            ".star-char",
+            {
+                opacity: 1,
+                duration: 0.8,
+                ease: "back.out(2)",
+            },
+            "-=0.5",
+        );
+
+        // 2. Animate Subtitle
+        tl.to(
+            ".hero-subtitle",
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "expo.out",
+            },
+            "-=1.4",
+        );
+
+        // 2.5. Animate Action Buttons
+        tl.to(
+            ".hero-action-btn",
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                stagger: 0.1,
+                ease: "expo.out",
+            },
+            "-=1.2",
+        );
+
+        // 3. Animate Technologies
+        tl.to(
+            ".tech-title",
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "expo.out",
+            },
+            "-=1.2",
+        );
+
+        tl.to(
+            ".tech-item",
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                stagger: 0.1,
+                ease: "expo.out",
+            },
+            "-=0.8",
+        );
+
+        // 4. Animate Navbar items
+        tl.to(
+            ".nav-item",
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.1,
+            },
+            "-=0.8",
+        );
+
+        // 5. Animate Scroll indicator
+        tl.to(
+            ".scroll-indicator",
+            {
+                opacity: 0.5,
+                y: 0,
+                duration: 1,
+            },
+            "-=0.5",
+        );
+
+        // Removed continuous floating effect for characters so they stay still after loading
+
+        // Parallax effect for text (Move up but keep visible)
+        // Las animaciones de scroll que ocultaban elementos han sido removidas para mantener visibilidad.
+
+        // Marquee Scroll Animation
+        gsap.to(".marquee-row-1", {
+            xPercent: 30,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".marquee-section",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+            },
+        });
+
+        gsap.to(".marquee-row-2", {
+            xPercent: -30,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".marquee-section",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+            },
+        });
+
+        // Phrase Marquee Animation
+        gsap.to(".marquee-phrase-row", {
+            xPercent: -20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".phrase-section",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+            },
+        });
+    });
+</script>

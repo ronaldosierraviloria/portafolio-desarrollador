@@ -1,0 +1,181 @@
+---
+import { Image } from "astro:assets";
+import LogoUniversidad from "../assets/logow.png";
+import LogoSpringer from "../assets/SpringerCapital.jpg";
+---
+
+<section
+    id="experiencia"
+    class="w-full py-24 px-4 md:px-8 relative z-20 bg-[#111111] text-white"
+>
+    <div class="max-w-6xl mx-auto">
+        <h2
+            class="resume-title text-[8vw] md:text-[6vw] font-['Beastly'] uppercase tracking-widest text-center mb-16 text-[#e0e0e0]"
+            data-i18n="exp_main_title"
+        >
+            Trayectoria
+        </h2>
+
+        <!-- Two columns with vertical divider -->
+        <div class="flex flex-col md:flex-row relative">
+            <!-- Vertical Line -->
+            <div
+                class="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/20 -translate-x-1/2"
+            >
+            </div>
+
+            <!-- Left Column: Educación -->
+            <div class="w-full md:w-1/2 md:pr-12 lg:pr-24 mb-16 md:mb-0">
+                <h3
+                    class="text-xl md:text-2xl font-mono uppercase tracking-[0.2em] mb-8 text-white/80 border-b border-white/20 pb-4 text-center md:text-right"
+                    data-i18n="exp_edu_title"
+                >
+                    Educación
+                </h3>
+
+                <div class="space-y-12">
+                    <!-- Education Item 1 -->
+                    <div
+                        class="resume-item flex flex-col md:items-end text-center md:text-right"
+                    >
+                        <div
+                            class="flex items-center justify-start gap-2 mb-2 md:flex-row-reverse w-full"
+                        >
+                            <div
+                                class="bg-white/10 p-2 border border-white/20 rounded-2xl overflow-hidden flex-shrink-0 flex items-center justify-center"
+                            >
+                                <Image
+                                    src={LogoUniversidad}
+                                    alt="Universidad"
+                                    class="w-50 h-full object-cover grayscale hover:grayscale-0 transition-all"
+                                />
+                            </div>
+                            <span
+                                class="text-white/50 font-mono text-sm tracking-widest"
+                                >2020 - PRESENTE</span
+                            >
+                        </div>
+                        <h4
+                            class="text-lg md:text-xl font-bold uppercase tracking-wider text-white"
+                            data-i18n="exp_edu_degree"
+                        >
+                            Ingenieria De Sistemas
+                        </h4>
+                        <h5
+                            class="text-white/80 font-mono text-sm mt-1 uppercase tracking-widest"
+                        >
+                            Corporación Universitaria Del Caribe CECAR
+                        </h5>
+                        <p class="text-white/60 mt-3 text-sm leading-relaxed" data-i18n="exp_edu_desc">
+                            Formación en tecnologías de la información con
+                            enfoque en análisis de datos y desarrollo de
+                            software.
+                        </p>
+                    </div>
+
+                    <!-- Add more education items here if needed -->
+                </div>
+            </div>
+
+            <!-- Right Column: Experiencia Profesional -->
+            <div class="w-full md:w-1/2 md:pl-12 lg:pl-24">
+                <h3
+                    class="text-xl md:text-2xl font-mono uppercase tracking-[0.2em] mb-8 text-white/80 border-b border-white/20 pb-4 text-center md:text-left"
+                    data-i18n="exp_pro_title"
+                >
+                    Experiencia Profesional
+                </h3>
+
+                <div class="space-y-12">
+                    <!-- Experience Item 1 -->
+                    <div
+                        class="resume-item flex flex-col items-center md:items-start text-center md:text-left"
+                    >
+                        <div
+                            class="flex items-center justify-center md:justify-start gap-4 mb-2 w-full"
+                        >
+                            <div
+                                class="bg-white/10 border border-white/20 rounded-2xl overflow-hidden flex-shrink-0 flex items-center justify-center"
+                            >
+                                <Image
+                                    src={LogoSpringer}
+                                    alt="Empresa"
+                                    class="w-50 h-full object-cover hover:grayscale-0 transition-all"
+                                />
+                            </div>
+                            <span
+                                class="text-white/50 font-mono text-sm tracking-widest"
+                                >2026 - Febrero - Actualidad</span
+                            >
+                        </div>
+                        <h4
+                            class="text-lg md:text-xl font-bold uppercase tracking-wider text-white"
+                            data-i18n="exp_job_title"
+                        >
+                            Power Apps And Power Automate Intern.
+                        </h4>
+                        <h5
+                            class="text-white/80 font-mono text-sm mt-1 uppercase tracking-widest"
+                        >
+                            Springer Capital
+                        </h5>
+                        <p class="text-white/60 mt-3 text-sm leading-relaxed" data-i18n="exp_job_desc">
+                            As a Power Apps and Power Automate intern at
+                            Springer Capital, I will learn how to create
+                            internal applications, automated flows, and connect
+                            SharePoint/Excel/Teams, as well as debug flow
+                            issues. I will also learn about low-code application
+                            architecture, workflow automation, data integration,
+                            and business process automation.
+                        </p>
+                    </div>
+
+                    <!-- Add more experience items here if needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Scroll animation for Experience section
+    const items = gsap.utils.toArray(".resume-item");
+
+    items.forEach((item: any) => {
+        gsap.fromTo(
+            item,
+            { opacity: 0, y: 50 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "expo.out",
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse",
+                },
+            },
+        );
+    });
+
+    gsap.fromTo(
+        ".resume-title",
+        { opacity: 0, scale: 0.9 },
+        {
+            opacity: 1,
+            scale: 1,
+            duration: 1.5,
+            ease: "expo.out",
+            scrollTrigger: {
+                trigger: ".resume-title",
+                start: "top 85%",
+            },
+        },
+    );
+</script>

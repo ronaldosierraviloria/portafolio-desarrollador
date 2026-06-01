@@ -1,0 +1,337 @@
+---
+import Preloader from "../components/Preloader.astro";
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/Icon-R.png" />
+		<link rel="apple-touch-icon" href="/Icon-R.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Preloader />
+		<div id="custom-cursor" class="custom-cursor"></div>
+		<slot />
+
+		<script>
+			import { gsap } from "gsap";
+
+			// --- i18n Logic ---
+			const translations = {
+				es: {
+					nav_projects: "Proyectos",
+					nav_about: "Sobre mí",
+					nav_contact: "Contacto",
+					hero_subtitle:
+						"Estudiante Ingeniería De Sistemas - Analista De Datos Junior.",
+					hero_projects_btn: "Proyectos",
+					hero_cv_btn: "Descargar CV",
+					tech_title: "Tecnologías",
+					cv_modal_title: "Selecciona el Idioma",
+					cv_es: "CV en Español",
+					cv_en: "CV en Inglés",
+					cv_close: "Cerrar",
+					about_quote:
+						'""Apasionado por los datos y el desarrollo. Transformando problemas complejos en soluciones elegantes a través de dashboards y analisis estadisticos.""',
+					about_title_1: "SOBRE",
+					about_title_2: "MÍ.",
+					about_p1:
+						"Analista de Datos Junior con experiencia en soluciones BI y automatización. Dominio de SQL, Leguanje de programacionPython, Microsoft Excel, Power BI, Google Looker Studio,Google Sheets, Estadistica y Amazon Web Services (AWS). Con experiencia en el desarrollo de procesos ETL (Extract, Transform, Load), procesamiento de datos e integracions desde diversas fuentes, y visualizacion de datos, creando Dashboards interactivos y funcionales.",
+					about_p2:
+						"Mi objetivo es conectar el mundo del Data Science con el Desarrollo de Software, creando productos que no solo sean visualmente impactantes, sino también funcionalmente robustos.",
+					about_exp: "Años Exp.",
+					about_projects: "Proyectos",
+					exp_main_title: "Trayectoria",
+					exp_edu_title: "Educación",
+					exp_pro_title: "Experiencia Profesional",
+					exp_edu_degree: "Ingeniería De Sistemas",
+					exp_edu_desc:
+						"Formación en tecnologías de la información con enfoque en análisis de datos y desarrollo de software.",
+					exp_job_title: "Pasante de Power Apps y Power Automate",
+					exp_job_desc:
+						"Como pasante de Power Apps y Power Automate en Springer Capital, aprenderé a crear aplicaciones internas, flujos automatizados y conectar SharePoint/Excel/Teams, además de depurar problemas de flujo. También aprenderé sobre arquitectura de aplicaciones low-code, automatización de flujos de trabajo, integración de datos y automatización de procesos empresariales.",
+					proj_title: "Proyectos",
+					proj_featured: "Proyecto Destacado",
+					proj_tools: "Herramientas :",
+					proj_analysis_label: "Análisis :",
+					skills_header: "Habilidades Tecnicas",
+					skills_cat_languages: "Lenguajes de Programación",
+					skills_cat_tools: "Herramientas de Análisis",
+					skills_cat_viz: "Visualización de Datos",
+					skills_cat_cloud: "Cloud Computing",
+					skills_cat_methods: "Estadística",
+					skills_cat_db: "Bases de Datos",
+					proj_1_title: "OPTIMIZACIÓN DE PRECIOS DE UBER",
+					proj_1_subtitle: "EN LA CIUDAD DE NUEVA YORK",
+					proj_1_desc:
+						'Un análisis de extremo a extremo sobre <span class="text-white font-bold border-b border-white/40 pb-0.5">encontrar el mejor modelo de precios</span> para las reservas de Uber en la ciudad de Nueva York <span class="text-white font-bold border-b border-white/40 pb-0.5">para aumentar los ingresos</span> realizando una <span class="text-white font-bold border-b border-white/40 pb-0.5">Regresión Lineal</span> para encontrar el impacto de cada variable, evaluar el modelo de precios existente (aplicación de Tarifa Alta y Tarifa con Descuento), realizar un análisis de impacto y dar recomendaciones. Este análisis <span class="text-white font-bold border-b border-white/40 pb-0.5">resultó en un mejor modelo de precios de Uber</span> que demostró <span class="text-white font-bold border-b border-white/40 pb-0.5">aumentar los ingresos en un 11.5%</span>.',
+					proj_2_title: "SEGMENTACIÓN DE CLIENTES",
+					proj_2_subtitle: "CONJUNTO DE DATOS DE ECOMMERCE",
+					proj_2_desc:
+						'Un análisis exhaustivo centrado en el <span class="text-white font-bold border-b border-white/40 pb-0.5">comportamiento de compra de los clientes</span> utilizando el análisis RFM (Recencia, Frecuencia, Monetario) y el <span class="text-white font-bold border-b border-white/40 pb-0.5">Clúster K-Means</span> para agrupar a los clientes en distintos segmentos. Esto permitió al equipo de marketing <span class="text-white font-bold border-b border-white/40 pb-0.5">personalizar las campañas de forma eficaz</span>, lo que resultó en un <span class="text-white font-bold border-b border-white/40 pb-0.5">aumento del 20% en la retención</span>.',
+					proj_link_deck: "Presentación Completa",
+					proj_link_tableau: "Dashboard en Tableau",
+					proj_link_colab: "Google Colab",
+					proj_link_study: "Caso de Estudio",
+					proj_link_powerbi: "Dashboard en Power BI",
+					proj_link_github: "Código en GitHub",
+					proj_toggle_analysis: "Análisis Estadísticos",
+					proj_toggle_dashboards: "Dashboards",
+					proj_3_title: "DASHBOARD DE RENDIMIENTO DE VENTAS",
+					proj_3_subtitle: "ANALÍTICA DE RETAIL",
+					proj_3_desc:
+						'Dashboard interactivo diseñado para <span class="text-white font-bold border-b border-white/40 pb-0.5">rastrear el rendimiento de ventas en tiempo real</span> en múltiples regiones. Incluye <span class="text-white font-bold border-b border-white/40 pb-0.5">filtrado dinámico</span>, análisis de tendencias y <span class="text-white font-bold border-b border-white/40 pb-0.5">monitoreo de KPIs</span> para impulsar decisiones comerciales informadas.',
+					proj_4_title: "RASTREADOR DE SALUD FINANCIERA",
+					proj_4_subtitle: "FINANZAS CORPORATIVAS",
+					proj_4_desc:
+						'Un dashboard ejecutivo de alto nivel centrado en la <span class="text-white font-bold border-b border-white/40 pb-0.5">sostenibilidad financiera y gestión de riesgos</span>. Proporciona una <span class="text-white font-bold border-b border-white/40 pb-0.5">visión de 360 grados</span> de las finanzas de la empresa, permitiendo identificar rápidamente <span class="text-white font-bold border-b border-white/40 pb-0.5">oportunidades de eficiencia</span>.',
+					contact_main_title: "Contacto",
+					contact_email_label: "Correo",
+					contact_email_btn: "Enviar Email",
+					contact_whatsapp_btn: "Mandar Mensaje",
+					footer_desc: "Portafolio de Analista de Datos",
+					footer_rights: "Todos los derechos reservados.",
+				},
+				en: {
+					nav_projects: "Projects",
+					nav_about: "About me",
+					nav_contact: "Contact",
+					hero_subtitle:
+						"Systems Engineering Student - Junior Data Analyst.",
+					hero_projects_btn: "Projects",
+					hero_cv_btn: "Download CV",
+					tech_title: "Technologies",
+					cv_modal_title: "Select Language",
+					cv_es: "CV in Spanish",
+					cv_en: "CV in English",
+					cv_close: "Close",
+					about_quote:
+						'"Passionate about data and development. Transforming complex problems into elegant solutions through code and information analysis."',
+					about_title_1: "ABOUT",
+					about_title_2: "ME.",
+					about_p1:
+						"I am a Systems Engineering student with a focus on data analysis. I specialize in extracting value from information using tools like Python, SQL, and Power BI, while enjoying building modern and high-performance web experiences.",
+					about_p2:
+						"My goal is to connect the world of Data Science with Software Development, creating products that are not only visually striking but also functionally robust.",
+					about_exp: "Years Exp.",
+					about_projects: "Projects",
+					exp_main_title: "Journey",
+					exp_edu_title: "Education",
+					exp_pro_title: "Work Experience",
+					exp_edu_degree: "Systems Engineering",
+					exp_edu_desc:
+						"Information technology training with a focus on data analysis and software development.",
+					exp_job_title: "Power Apps And Power Automate Intern.",
+					exp_job_desc:
+						"As a Power Apps and Power Automate intern at Springer Capital, I will learn how to create internal applications, automated flows, and connect SharePoint/Excel/Teams, as well as debug flow issues. I will also learn about low-code application architecture, workflow automation, data integration, and business process automation.",
+					proj_title: "Projects",
+					proj_featured: "Featured Project",
+					proj_tools: "Tools :",
+					proj_analysis_label: "Analysis :",
+					skills_header: "Technical Skills",
+					skills_cat_languages: "Programming Languages",
+					skills_cat_tools: "Data Analytic Tools",
+					skills_cat_viz: "Data Visualization",
+					skills_cat_cloud: "Cloud Computing",
+					skills_cat_methods: "Statistics",
+					skills_cat_db: "Databases",
+					proj_1_title: "UBER PRICING OPTIMIZATION",
+					proj_1_subtitle: "IN NEW YORK CITY",
+					proj_1_desc:
+						'An end-to-end analysis about <span class="text-white font-bold border-b border-white/40 pb-0.5">finding out the best pricing model</span> for uber booking in New York City <span class="text-white font-bold border-b border-white/40 pb-0.5">to increase the revenue</span> by doing <span class="text-white font-bold border-b border-white/40 pb-0.5">Linear Regression</span> to find out the impact of each variables of uber booking, evaluate the existing pricing model (High Fare and Discounted Fare application), do impact analysis and give recommendation of the best uber booking pricing. This analysis <span class="text-white font-bold border-b border-white/40 pb-0.5">resulting a better model of Uber Pricing</span> that is proven to <span class="text-white font-bold border-b border-white/40 pb-0.5">increase 11.5% revenue</span>.',
+					proj_2_title: "CUSTOMER SEGMENTATION",
+					proj_2_subtitle: "ECOMMERCE DATASET",
+					proj_2_desc:
+						'A comprehensive analysis focusing on <span class="text-white font-bold border-b border-white/40 pb-0.5">customer purchasing behavior</span> using RFM (Recency, Frequency, Monetary) analysis and <span class="text-white font-bold border-b border-white/40 pb-0.5">K-Means Clustering</span> to group customers into distinct segments. This allowed the marketing team to <span class="text-white font-bold border-b border-white/40 pb-0.5">tailor campaigns effectively</span>, resulting in a <span class="text-white font-bold border-b border-white/40 pb-0.5">20% increase in retention</span>.',
+					proj_link_deck: "Full Deck",
+					proj_link_tableau: "Tableau Dashboard",
+					proj_link_colab: "Google Colab",
+					proj_link_study: "Case Study",
+					proj_link_powerbi: "Power BI Dashboard",
+					proj_link_github: "GitHub Code",
+					proj_toggle_analysis: "Statistical Analysis",
+					proj_toggle_dashboards: "Dashboards",
+					proj_3_title: "SALES PERFORMANCE DASHBOARD",
+					proj_3_subtitle: "RETAIL ANALYTICS",
+					proj_3_desc:
+						'Interactive dashboard designed to <span class="text-white font-bold border-b border-white/40 pb-0.5">track real-time sales performance</span> across multiple regions. Features include <span class="text-white font-bold border-b border-white/40 pb-0.5">dynamic filtering</span>, trend analysis, and <span class="text-white font-bold border-b border-white/40 pb-0.5">KPI monitoring</span> to drive data-informed business decisions.',
+					proj_4_title: "FINANCIAL HEALTH TRACKER",
+					proj_4_subtitle: "CORPORATE FINANCE",
+					proj_4_desc:
+						'A high-level executive dashboard focused on <span class="text-white font-bold border-b border-white/40 pb-0.5">financial sustainability and risk management</span>. It provides a <span class="text-white font-bold border-b border-white/40 pb-0.5">360-degree view</span> of company finances, enabling quick identification of <span class="text-white font-bold border-b border-white/40 pb-0.5">efficiency opportunities</span>.',
+					contact_main_title: "Contact",
+					contact_email_label: "Email",
+					contact_email_btn: "Send Email",
+					contact_linkedin_btn: "View Profile",
+					contact_whatsapp_btn: "Send Message",
+					footer_desc: "Data Analyst Portfolio",
+					footer_rights: "All rights reserved.",
+				},
+			};
+
+			let currentLang = localStorage.getItem("lang") || "es";
+
+			function updateLanguage(lang) {
+				currentLang = lang;
+				localStorage.setItem("lang", lang);
+
+				// Update all elements with data-i18n attribute
+				document.querySelectorAll("[data-i18n]").forEach((el) => {
+					const key = el.getAttribute("data-i18n");
+					if (translations[lang][key]) {
+						// Simple fade animation with GSAP when changing
+						gsap.to(el, {
+							opacity: 0,
+							duration: 0.2,
+							onComplete: () => {
+								el.innerHTML = translations[lang][key];
+								gsap.to(el, { opacity: 1, duration: 0.2 });
+							},
+						});
+					}
+				});
+
+				// Update lang toggle button text
+				const langToggle = document.getElementById("lang-toggle");
+				if (langToggle) {
+					langToggle.innerHTML = `<span>${lang === "es" ? "EN" : "ES"}</span>`;
+				}
+
+				// Update HTML lang attribute
+				document.documentElement.lang = lang;
+			}
+
+			// Initialize
+			window.addEventListener("DOMContentLoaded", () => {
+				updateLanguage(currentLang);
+			});
+
+			// Expose to window for the Navbar button
+			window.toggleLanguage = () => {
+				const newLang = currentLang === "es" ? "en" : "es";
+				updateLanguage(newLang);
+			};
+
+			// --- Cursor Logic ---
+			const cursor = document.getElementById("custom-cursor");
+			if (window.matchMedia("(pointer: fine)").matches) {
+				gsap.set(cursor, {
+					x: window.innerWidth / 2,
+					y: window.innerHeight / 2,
+				});
+
+				window.addEventListener("mousemove", (e) => {
+					gsap.to(cursor, {
+						x: e.clientX - 40,
+						y: e.clientY - 40,
+						duration: 0.15,
+						ease: "power2.out",
+					});
+				});
+			} else {
+				if (cursor) cursor.style.display = "none";
+			}
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	@font-face {
+		font-family: "Beastly";
+		src: url("/Fonts/fonnts.com-BeastlyDemo-72Point.otf") format("opentype");
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "JHCRasbora";
+		src: url("/Fonts/JHCRasbora-Extrabold.otf") format("opentype");
+		font-weight: bold;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "JHCRasbora";
+		src: url("/Fonts/JHCRasbora-RegularItalic.otf") format("opentype");
+		font-weight: normal;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background-color: #111111;
+		color: #ffffff;
+		min-height: 100%;
+		overflow-x: hidden;
+		/* Estilo de la barra de desplazamiento */
+		scrollbar-width: thin;
+		scrollbar-color: #ffffff #111111;
+	}
+	html::-webkit-scrollbar {
+		width: 6px;
+		display: block;
+	}
+	html::-webkit-scrollbar-track {
+		background: #111111;
+	}
+	html::-webkit-scrollbar-thumb {
+		background-color: #ffffff;
+		border-radius: 10px;
+	}
+	html::-webkit-scrollbar-thumb:hover {
+		background-color: #e0e0e0;
+	}
+	body {
+		margin: 0;
+		min-height: 100vh;
+		overflow-x: hidden;
+	}
+	.custom-cursor {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		background-color: white;
+		mix-blend-mode: difference;
+		pointer-events: none;
+		z-index: 99999;
+		will-change: transform;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style>

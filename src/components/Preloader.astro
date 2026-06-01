@@ -1,0 +1,28 @@
+<div id="preloader" class="fixed inset-0 z-[100] pointer-events-none flex w-full h-full overflow-hidden">
+    <!-- Shutters effect -->
+    <div class="shutter w-1/5 h-full bg-[#E0E0E0]"></div>
+    <div class="shutter w-1/5 h-full bg-[#E0E0E0]"></div>
+    <div class="shutter w-1/5 h-full bg-[#E0E0E0]"></div>
+    <div class="shutter w-1/5 h-full bg-[#E0E0E0]"></div>
+    <div class="shutter w-1/5 h-full bg-[#E0E0E0]"></div>
+</div>
+
+<script>
+    import { gsap } from "gsap";
+
+    const tl = gsap.timeline({
+        onComplete: () => {
+            document.getElementById("preloader")?.remove();
+            window.dispatchEvent(new CustomEvent('page-loaded'));
+        }
+    });
+
+    // Shutters sliding up
+    tl.to(".shutter", {
+        yPercent: -100,
+        duration: 1.2,
+        stagger: 0.1,
+        ease: "expo.inOut",
+        delay: 0.2
+    });
+</script>

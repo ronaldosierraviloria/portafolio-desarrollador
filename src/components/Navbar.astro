@@ -1,0 +1,49 @@
+---
+
+---
+
+<nav
+    class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-6 bg-transparent"
+>
+    <!-- Left: Navigation Links -->
+    <div class="flex gap-4 md:gap-8 flex-1">
+        <a
+            href="#proyectos"
+            data-i18n="nav_projects"
+            class="nav-item text-[10px] md:text-xs uppercase tracking-[0.2em] text-white hover:opacity-70 transition-opacity opacity-0 -translate-y-4 font-bold"
+            >Proyectos</a
+        >
+        <a
+            href="#about"
+            data-i18n="nav_about"
+            class="nav-item text-[10px] md:text-xs uppercase tracking-[0.2em] text-white hover:opacity-70 transition-opacity opacity-0 -translate-y-4 font-bold"
+            >Sobre mí</a
+        >
+    </div>
+
+    <!-- Right: Contact & Language -->
+    <div class="flex items-center gap-4 flex-1 justify-end">
+        <a
+            href="#contacto"
+            data-i18n="nav_contact"
+            class="nav-item text-[10px] md:text-xs uppercase tracking-[0.2em] border border-white/30 text-white px-4 md:px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all opacity-0 -translate-y-4 font-bold"
+            >Contacto</a
+        >
+        <button
+            id="lang-toggle"
+            onclick="window.toggleLanguage()"
+            class="nav-item group relative text-[10px] md:text-xs uppercase tracking-[0.2em] bg-white/10 border border-white/30 text-white w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full hover:bg-white hover:text-black transition-all opacity-0 -translate-y-4 font-bold overflow-hidden hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+        >
+            <span class="relative z-10">EN</span>
+            <div
+                class="absolute inset-0 bg-white scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full"
+            >
+            </div>
+        </button>
+    </div>
+</nav>
+
+<script>
+    // Animation for the button pulse or interaction can be added here if needed,
+    // but the global logic is now in MainLayout.
+</script>

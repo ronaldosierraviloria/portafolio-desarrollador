@@ -1,0 +1,41 @@
+---
+interface Props {
+    text1: string;
+    text2: string;
+}
+
+const { text1, text2 } = Astro.props;
+---
+
+<section class="marquee-section py-20 overflow-hidden bg-transparent select-none">
+    <div class="marquee-wrapper flex flex-col gap-2 md:gap-4 relative">
+        <!-- Row 1: Left to Right -->
+        <div class="marquee-row-1 flex whitespace-nowrap">
+            {Array.from({ length: 8 }).map(() => (
+                <span class="text-[8vw] md:text-[10vw] font-bold font-sans uppercase leading-none px-6 text-[#e0e0e0]">
+                    {text1} <span class="text-[#e0e0e0]/50">—</span>
+                </span>
+            ))}
+        </div>
+        
+        <!-- Separator Line -->
+        <div class="w-full h-px bg-white/20 my-2"></div>
+        
+        <!-- Row 2: Right to Left -->
+        <div class="marquee-row-2 flex whitespace-nowrap translate-x-[-20%]">
+            {Array.from({ length: 8 }).map(() => (
+                <span class="text-[8vw] md:text-[10vw] font-bold font-sans uppercase leading-none px-6 text-[#e0e0e0]">
+                    {text2} <span class="text-[#e0e0e0]/50">—</span>
+                </span>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .marquee-section {
+        /* Ensure no horizontal scrollbar */
+        width: 100%;
+        position: relative;
+    }
+</style>

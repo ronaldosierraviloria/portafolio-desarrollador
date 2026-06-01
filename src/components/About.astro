@@ -1,0 +1,113 @@
+---
+import { Image } from "astro:assets";
+import profilePic from "../assets/Ronaldo-Image.jpg";
+---
+
+<section
+    id="sobre-mi"
+    class="relative w-full min-h-screen bg-[#111111] text-white py-24 px-6 md:px-12 lg:px-24 flex flex-col justify-center overflow-hidden"
+>
+    <div
+        class="relative z-10 w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start mt-10"
+    >
+        <div class="lg:col-span-5 flex flex-col gap-8 about-left">
+            <div
+                class="w-full aspect-[4/5] bg-white/5 border border-white/20 rounded-[2rem] overflow-hidden relative group"
+            >
+                <Image
+                    src={profilePic}
+                    alt="Ronaldo Perfil"
+                    class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                />
+                <!-- Subtle overlay -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-50"
+                >
+                </div>
+            </div>
+
+            <div
+                class="text-white/70 font-['JHCRasbora'] italic text-sm leading-relaxed border-l-2 border-white/20 pl-6"
+            >
+                <p class="italic" data-i18n="about_quote">
+                    "Apasionado por los datos y el desarrollo. Transformando
+                    problemas complejos en soluciones elegantes a través de
+                    dashboards y analisis estadisticos."
+                </p>
+            </div>
+        </div>
+
+        <div
+            class="lg:col-span-7 flex flex-col gap-10 about-right pt-4 lg:pt-10"
+        >
+            <h2
+                class="text-[18vw] lg:text-[12vw] leading-[0.75] font-['Beastly'] uppercase tracking-[0.02em] text-[#e0e0e0] m-0 p-0"
+            >
+                <span data-i18n="about_title_1">SOBRE</span><br />
+                <span data-i18n="about_title_2">MÍ.</span>
+            </h2>
+
+            <div class="w-24 h-[2px] bg-white/30 my-2"></div>
+
+            <div class="flex flex-col gap-8">
+                <p
+                    class="text-xl md:text-2xl text-white/90 leading-relaxed font-['JHCRasbora'] max-w-2xl"
+                    data-i18n="about_p1"
+                >
+                </p>
+            </div>
+            <div class="flex gap-16 mt-8 pt-10 border-t border-white/10">
+                <div class="flex flex-col gap-2">
+                    <h4
+                        class="text-4xl lg:text-5xl font-bold font-mono text-white"
+                    >
+                        01+
+                    </h4>
+                    <span
+                        class="text-xs uppercase tracking-widest text-white/50"
+                        data-i18n="about_exp">Años Exp.</span
+                    >
+                </div>
+                <div class="flex flex-col gap-2">
+                    <h4
+                        class="text-4xl lg:text-5xl font-bold font-mono text-white"
+                    >
+                        4+
+                    </h4>
+                    <span
+                        class="text-xs uppercase tracking-widest text-white/50"
+                        data-i18n="about_projects">Proyectos</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Reveal animations for About section
+    const tlAbout = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#sobre-mi",
+            start: "top 75%",
+        },
+    });
+
+    tlAbout
+        .fromTo(
+            ".about-left",
+            { y: 100, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1.2, ease: "expo.out" },
+        )
+        .fromTo(
+            ".about-right > *",
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "expo.out" },
+            "-=0.8",
+        );
+</script>
