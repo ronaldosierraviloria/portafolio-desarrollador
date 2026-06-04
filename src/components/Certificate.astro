@@ -1,0 +1,40 @@
+---
+import presentationImg from "../assets/ProjectContent/EDA-Inmobiliaria/Presentacion.webp";
+
+const Certificados = [
+    {
+        title: "Microsoft Excel",
+        enterprise: "Programa de capacitación Conecta Empleo",
+    },
+    {
+        title: "Certificado Ingles B1",
+        enterprise: "Corporación Universitaria del Caribe - CECAR - Centro de Idiomas",
+    },
+    {
+        title: "Google Analytics 2025 - 2026",
+        enterprise: "SkillShop - Google",
+    },
+    {
+        title: "Análisis Explotario de Datos con Python",
+        enterprise: "SENA - Servicio Nacional de Aprendizaje",
+    }
+];
+---
+
+<section class="border-b border-white/20 pb-12">
+    <h1 class="text-[8vw] md:text-[6vw] font-['Beastly'] uppercase tracking-widest text-center mb-8 text-[#e0e0e0]"
+        data-i18n="cert_title">
+
+        Certificados
+    </h1>
+    <div class="container mx-auto px-4 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {Certificados.map((cert) => (
+            <div class="bg-[#1e1e1e] rounded-lg p-6 text-center">
+                <h2 class="text-xl font-['JHCRasbora'] font-bold mb-2 text-[#e0e0e0]">{cert.title}</h2>
+                <p class="text-md text-[#a0a0a0]">{cert.enterprise}</p>
+            </div>
+        ))}
+
+    </div>
+    
+</section>
