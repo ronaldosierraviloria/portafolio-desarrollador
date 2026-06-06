@@ -4,6 +4,8 @@ import presentationImg from "../assets/ProjectContent/EDA-Inmobiliaria/presentac
 import FirstView from "../assets/ProjectContent/DigitalBurnout/vista1.webp";
 import SecondView from "../assets/ProjectContent/DigitalBurnout/vista2.webp";
 import presentacionP from "../assets/ProjectContent/PruebasAB/portada.webp";
+import firstvista from "../assets/ProjectContent/superstore/superv1.png";
+import secondvista from "../assets/ProjectContent/superstore/superv2.png";
 
 const projectsData = [
     {
@@ -78,6 +80,26 @@ de el <span class="text-white font-bold border-b border-white/40 pb-0.5">cansanc
                 text: "Documentation",
                 i18nKey: "proj_link_github",
                 url: "https://github.com/ronaldosierraviloria/Digital-Burnout-And-Productivity-Analytics-",
+            },
+        ],
+    },
+    {
+        id: "04",
+        title: "Super Store Sales Analysis",
+        subtitle: "Visualization",
+        image1: firstvista.src,
+        image2: secondvista.src,
+        type: "dashboard",
+        descriptionHtml: `Visualización sobre <span class="text-white font-bold border-b border-white/40 pb-0.5">tienda e-commerce con esquema estrella </span>, 
+            El análisis se realiza utilizando Power BI, donde se procesan y modelan los datos para crear visualizaciones interactivas que faciliten la comprensión de las tendencias y patrones en las ventas de la tienda. <span class="text-white font-bold border-b border-white/40 pb-0.5">El resultado es un dashboard dinámico </span> que proporciona insights valiosos para optimizar las estrategias de venta y mejorar el rendimiento del negocio.
+        `,
+        tools: "Power BI, Data Analysis Expressions (DAX), Power Query",
+        analysis: "Data Processing, Data Cleaning, Data Modeling",
+        links: [
+            {
+                text: "Live Dashboard",
+                i18nKey: "proj_link_powerbi",
+                url: "https://app.powerbi.com/view?r=eyJrIjoiYmRjNjU4YjktM2NkMS00NzRjLTk1MTYtODlmY2MwMjJlZDM5IiwidCI6ImJlZjU3Y2ZhLWY1MzItNDU4Ny05ZTY4LWJhNDEyYTU1OTY0YiIsImMiOjR9",
             },
         ],
     },
