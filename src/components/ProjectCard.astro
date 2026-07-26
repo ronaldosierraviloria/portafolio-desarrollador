@@ -177,6 +177,8 @@ const hasSlider = project.images.length > 1;
                         return (
                             <a
                                 href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 class={`border border-white/30 px-6 py-4 text-white uppercase tracking-[0.2em] text-[10px] md:text-xs text-center hover:bg-white hover:text-black transition-all cursor-pointer ${
                                     isDashboard ? "btn-dashboard" : ""
                                 }`}
