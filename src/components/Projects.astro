@@ -86,7 +86,7 @@ const projectsData = [
             {
                 text: "Documentation",
                 i18nKey: "proj_link_github",
-                url: "",
+                url: "https://github.com/ronaldosierraviloria/chatbot",
             },
         ],
     },
@@ -108,7 +108,7 @@ const projectsData = [
         <div class="projects-grid flex flex-col gap-24 md:gap-32">
             {
                 projectsData.map((project) => (
-                    <div class="project-container text-justify opacity-0 translate-y-12">
+                    <div class="project-container opacity-0 translate-y-12">
                         <ProjectCard project={project} />
                     </div>
                 ))
