@@ -1,105 +1,92 @@
 ---
 import ProjectCard from "./ProjectCard.astro";
-import presentationImg from "../assets/ProjectContent/EDA-Inmobiliaria/presentacion.webp";
-import FirstView from "../assets/ProjectContent/DigitalBurnout/vista1.webp";
-import SecondView from "../assets/ProjectContent/DigitalBurnout/vista2.webp";
-import presentacionP from "../assets/ProjectContent/PruebasAB/portada.webp";
-import firstvista from "../assets/ProjectContent/superstore/superv1.png";
-import secondvista from "../assets/ProjectContent/superstore/superv2.png";
-
+import loginimg from "../assets/ProjectContent/cecar-project/Pag (1).jpeg";
+import indeximg from "../assets/ProjectContent/cecar-project/Pag (2).jpeg";
+import gestorimg from "../assets/ProjectContent/cecar-project/gestor.jpeg";
+import evaluadorimg from "../assets/ProjectContent/cecar-project/evaluador.jpeg";
+import loginlogiticaimg from "../assets/ProjectContent/logistica-project/logindashboard.png";
+import homeimg from "../assets/ProjectContent/logistica-project/homedashboard.png";
+import logisticaimg from "../assets/ProjectContent/logistica-project/logisticadashboard.png";
+import activosimg from "../assets/ProjectContent/logistica-project/activosdashboard.png";
+import configuracionimg from "../assets/ProjectContent/logistica-project/configuraciondashboard.png";
+import chatbotimg from "../assets/chatbot/chatbotimg.png";
+import chatbotresponseimg from "../assets/chatbot/chatbotresponse.png";
+import geminiapimg from "../assets/chatbot/geminiapi.png";
+import dockerimage from "../assets/chatbot/dockerimage.png";
 const projectsData = [
     {
         id: "01",
-        title: "ANALISI EXPLORATORIO DE DATOS - INMOBILIARIA",
-        subtitle: "EN COLOMBIA",
-        image1: presentationImg.src,
-        image2: "",
-        type: "analysis",
-        descriptionHtml: `Un análisis <span class="text-white font-bold border-b border-white/40 pb-0.5">de datos sobre inmuebles en venta en Colombia</span>, utilizando técnicas de <span class="text-white font-bold border-b border-white/40 pb-0.5">análisis exploratorio de datos (EDA)</span> para identificar patrones y tendencias en el mercado inmobiliario colombiano. Este análisis <span class="text-white font-bold border-b border-white/40 pb-0.5">resulta en una mejor comprensión del mercado</span> y proporciona información valiosa para inversores y compradores.`,
-        tools: "Google Colab, Python, Librerias (Pandas, Numpy, Seaborn, Matplotlib), Google Slides",
-        analysis: "Analisis Exploratorio, Estadistico y Visual.",
+        title: "Plataforma Institucional",
+        subtitle:
+            "Software para la gestión, asignación y evaluación de proyectos de grado en la Corporación Universitaria Del Caribe CECAR",
+        images: [loginimg.src, indeximg.src, gestorimg.src, evaluadorimg.src],
+        descriptionHtml:
+            "La plataforma cuenta con una autenticación por Roles (Administrador,  Gestor, Evaluador), Donde cada uno tiene diferente funcionalidades. <span class='text-white font-bold border-b border-white/40 pb-0.5'>Administrador:</span> Gestiona los usuarios, áreas, tipos de trabajo, estudiantes, Asigna Evaluadores, Tiene trazabilidad de cada proyecto. <span class='text-white font-bold border-b border-white/40 pb-0.5'>Gestor:</span> Gestiona los documentos, Asigna rubricas de evaluación. <span class='text-white font-bold border-b border-white/40 pb-0.5'>Evaluador:</span> Evalúa los proyectos. La plataforma esta basada en la Arquitectura <span class='text-white font-bold border-b border-white/40 pb-0.5'>MVC (Model,View,Controller)</span> y cuenta con un sistema de notificaciones interno.",
+        tools: "Vite,Laravel, PostgreSQL,TailwindCSS, AlpineJs, Flowbite, ApexCharts",
+        analysis:
+            "Arquitectura MVC, Base de Datos Relacional, Frontend SPA, Sistema de Notificaciones",
         links: [
             {
-                text: "Full Deck",
+                text: "View Application",
                 i18nKey: "proj_link_deck",
-                url: "https://docs.google.com/presentation/d/1MpTObNH8DVqi5NeWxW8uQqXwQ2iBhUcMAUnet1f8ELE/edit?usp=sharing",
+                url: "https://cecar-project.vercel.app/login",
             },
             {
                 text: "GitHub",
                 i18nKey: "proj_link_github",
-                url: "https://github.com/ronaldosierraviloria/AnalisisExploratorioDeInmobiliaria",
-            },
-            {
-                text: "Google Colab",
-                i18nKey: "proj_link_colab",
-                url: "https://colab.research.google.com/drive/1_H1EdzMXILCjIQO1nPtSej9eImkc-GAI?usp=sharing",
+                url: "https://github.com/ronaldosierraviloria/cecar-project",
             },
         ],
     },
     {
         id: "02",
-        title: "PRUEBAS A/B TESTING",
-        subtitle: "MARKETING",
-        image1: presentacionP.src,
-        image2: "",
-        type: "analysis",
-        descriptionHtml: `Realización de pruebas <span class="text-white font-bold border-b border-white/40 pb-0.5">A/B </span> para optimizar <span class="text-white font-bold border-b border-white/40 pb-0.5">campañas de marketing digital.</span> Comparación de variantes A y B para determinar qué elementos generan <span class="text-white font-bold border-b border-white/40 pb-0.5">mayor engagement y conversión. </span> Los resultados se utilizan para tomar decisiones basadas en datos y mejorar el rendimiento de futuras campañas.`,
-        tools: "Visual Studio Code, Python, Librerias (Pandas, Numpy, Seaborn, Matplotlib), Google Slides",
-        analysis: "Analisis de dos camapañas",
+        title: "Dashboard Web para empresa de Logistica.",
+        subtitle: "Logistica",
+        images: [
+            loginlogiticaimg.src,
+            homeimg.src,
+            logisticaimg.src,
+            activosimg.src,
+            configuracionimg.src,
+        ],
+        descriptionHtml: `El objetivo de este proyecto es desarrollar una aplicación web que sirva como un dashboard interactivo para una empresa de logística. La plataforma permitirá a los usuarios visualizar y analizar datos relacionados con el transporte de paquetería y envíos. Los datos serán cargados manualmente por el usuario en archivos Excel (xlsx, CSV) y la aplicación procesará la información para generar visualizaciones gráficas y estadísticas que faciliten el seguimiento de envíos y la toma de decisiones. La interfaz será intuitiva, permitiendo una navegación fluida entre las diferentes secciones del dashboard, ademas de ser totalmente responsive y adaptada a dispositivos moviles.`,
+        tools: "HTML5, TailwindCSS, Python, Flask, SQLite, Excel, Pandas, Matplotlib",
+        analysis:
+            "Sistema De Notificaciones, Responsive, Capacidad de escalar.",
         links: [
             {
                 text: "Full Deck",
                 i18nKey: "proj_link_deck",
-                url: "https://docs.google.com/presentation/d/15FofChjtZJQ5MZTFul7Hme7dSCjPtKGKnyp54nQqXsY/edit?usp=sharing",
+                url: "https://logistica-project-theta.vercel.app/login",
             },
             {
                 text: "GitHub",
                 i18nKey: "proj_link_github",
-                url: "https://github.com/ronaldosierraviloria/Pruebas-AB-Testing-Marketing-Dataset",
+                url: "http://github.com/ronaldosierraviloria/logistica-project",
             },
         ],
     },
     {
         id: "03",
-        title: "Digital Burnout & Productivity Analytics",
-        subtitle: "Visualization",
-        image1: FirstView.src,
-        image2: SecondView.src,
-        type: "dashboard",
-        descriptionHtml: `Visualización sobre <span class="text-white font-bold border-b border-white/40 pb-0.5">Cansancio Digital y Análisis de Productividad </span>, para encontrar los causantes
-de el <span class="text-white font-bold border-b border-white/40 pb-0.5">cansancio digital y analizar la productividad </span> de esta mediante el uso de <span class="text-white font-bold border-b border-white/40 pb-0.5">diferentes variables </span>, identificando cuales tienen un mayor modos de trabajos, trabajos, etc. Tienen o se ven afectados por este cansancio y si la productividad se ve afectada por este. <span class="text-white font-bold border-b border-white/40 pb-0.5">Analizando los resultados </span> observamos como la modalidad de trabajo Remota contiene el mayor numero de <span class="text-white font-bold border-b border-white/40 pb-0.5">Fatiga mental </span> por parte de los usuarios.`,
-        tools: "Python, Power BI, PgAdmin4, Visual Studio Code",
-        analysis: "Data Processing, Data Visualization, Data Analysis, SQL",
+        title: "Chatbot Web Integrando Modelo de Inteligencia Artificial",
+        subtitle:
+            "Automatización Servicio de recepción de pedidos a domicilios en un restaurante.",
+        images: [
+            "/chatbotfuncion.mp4",
+            chatbotimg.src,
+            dockerimage.src,
+            chatbotresponseimg.src,
+            geminiapimg.src,
+        ],
+        descriptionHtml:
+            "Chatbot web para automatizar el proceso de recepcion de pedidos basado en una arquitectura de <span class='text-white font-bold border-b border-white/40 pb-0.5'>Microservicios</span>, ademas de estar contenerizado en <span class='text-white font-bold border-b border-white/40 pb-0.5'>Docker</span>, respuestas automaticas mediante la <span class='text-white font-bold border-b border-white/40 pb-0.5'>Inteligencia Artificial Gemini 3.5 Flash</span> modelo gratuito que solamente renderiza texto, perfecto para respuestas automaticas.",
+        tools: "Python, FastApi, GemeiniAPI, Microservicios, Docker, JSON",
+        analysis: "Inteligencia Artificial, Automatización",
         links: [
-            {
-                text: "Live Dashboard",
-                i18nKey: "proj_link_powerbi",
-                url: "https://app.powerbi.com/view?r=eyJrIjoiNTc4YjU4OWMtM2M1MS00ZWM2LWFlZDctNzhmMGYwZGQ1NTZhIiwidCI6ImJlZjU3Y2ZhLWY1MzItNDU4Ny05ZTY4LWJhNDEyYTU1OTY0YiIsImMiOjR9",
-            },
             {
                 text: "Documentation",
                 i18nKey: "proj_link_github",
-                url: "https://github.com/ronaldosierraviloria/Digital-Burnout-And-Productivity-Analytics-",
-            },
-        ],
-    },
-    {
-        id: "04",
-        title: "Super Store Sales Analysis",
-        subtitle: "Visualization",
-        image1: firstvista.src,
-        image2: secondvista.src,
-        type: "dashboard",
-        descriptionHtml: `Visualización sobre <span class="text-white font-bold border-b border-white/40 pb-0.5">tienda e-commerce con esquema estrella </span>, 
-            El análisis se realiza utilizando Power BI, donde se procesan y modelan los datos para crear visualizaciones interactivas que faciliten la comprensión de las tendencias y patrones en las ventas de la tienda. <span class="text-white font-bold border-b border-white/40 pb-0.5">El resultado es un dashboard dinámico </span> que proporciona insights valiosos para optimizar las estrategias de venta y mejorar el rendimiento del negocio.
-        `,
-        tools: "Power BI, Data Analysis Expressions (DAX), Power Query",
-        analysis: "Data Processing, Data Cleaning, Data Modeling",
-        links: [
-            {
-                text: "Live Dashboard",
-                i18nKey: "proj_link_powerbi",
-                url: "https://app.powerbi.com/view?r=eyJrIjoiYmRjNjU4YjktM2NkMS00NzRjLTk1MTYtODlmY2MwMjJlZDM5IiwidCI6ImJlZjU3Y2ZhLWY1MzItNDU4Ny05ZTY4LWJhNDEyYTU1OTY0YiIsImMiOjR9",
+                url: "",
             },
         ],
     },
@@ -118,38 +105,10 @@ de el <span class="text-white font-bold border-b border-white/40 pb-0.5">cansanc
             Proyectos
         </h2>
 
-        <!-- Toggle Controls -->
-        <div class="flex justify-center mb-24">
-            <div
-                class="inline-flex p-1 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm"
-            >
-                <button
-                    class="project-toggle px-6 py-2 md:px-8 md:py-3 rounded-full text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all duration-500 active-toggle"
-                    data-category="analysis"
-                >
-                    <span data-i18n="proj_toggle_analysis"
-                        >Análisis Estadísticos</span
-                    >
-                </button>
-                <button
-                    class="project-toggle px-6 py-2 md:px-8 md:py-3 rounded-full text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all duration-500 text-white/40 hover:text-white"
-                    data-category="dashboard"
-                >
-                    <span data-i18n="proj_toggle_dashboards">Dashboards</span>
-                </button>
-            </div>
-        </div>
-
         <div class="projects-grid flex flex-col gap-24 md:gap-32">
             {
                 projectsData.map((project) => (
-                    <div
-                        class="project-container opacity-0 translate-y-12"
-                        data-type={project.type}
-                        style={
-                            project.type === "dashboard" ? "display: none;" : ""
-                        }
-                    >
+                    <div class="project-container text-justify opacity-0 translate-y-12">
                         <ProjectCard project={project} />
                     </div>
                 ))
@@ -158,140 +117,7 @@ de el <span class="text-white font-bold border-b border-white/40 pb-0.5">cansanc
     </div>
 </section>
 
-<!-- Dashboard Modal -->
-<dialog
-    id="dashboard-modal"
-    class="bg-transparent border-0 p-0 text-white w-full h-full max-w-none max-h-none overflow-hidden m-0 justify-center items-center backdrop:bg-black/90 backdrop:backdrop-blur-md z-[200] outline-none"
->
-    <!-- Modal Container -->
-    <div
-        id="dashboard-modal-container"
-        class="w-[95vw] h-[90vh] max-w-7xl bg-[#111111]/90 border border-white/10 rounded-2xl flex flex-col relative overflow-hidden backdrop-blur-xl shadow-2xl"
-    >
-        <!-- Header -->
-        <div
-            class="px-6 py-4 md:px-8 md:py-5 border-b border-white/10 flex justify-between items-center bg-[#181818]/60 backdrop-blur-md"
-        >
-            <div>
-                <h3
-                    id="dashboard-modal-title"
-                    class="text-sm md:text-base font-bold tracking-wider uppercase font-mono text-white/90"
-                >
-                    Visualización
-                </h3>
-                <p
-                    id="dashboard-modal-subtitle"
-                    class="text-[9px] md:text-[10px] text-white/50 uppercase tracking-[0.2em] font-mono mt-0.5"
-                >
-                    Power BI Live Embed
-                </p>
-            </div>
-
-            <!-- Close Button -->
-            <button
-                id="close-dashboard-modal"
-                class="group relative flex items-center justify-center w-10 h-10 rounded-full border border-white/20 hover:border-white text-white/70 hover:text-white transition-all duration-300 cursor-pointer overflow-hidden"
-                aria-label="Cerrar modal"
-            >
-                <div
-                    class="absolute inset-0 bg-white/5 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full"
-                >
-                </div>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="relative z-10 transition-transform duration-300 group-hover:rotate-90"
-                >
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-        </div>
-
-        <!-- Body / Content -->
-        <div
-            class="flex-1 w-full h-full relative bg-black/40 flex items-center justify-center"
-        >
-            <!-- Dynamic Loader -->
-            <div
-                id="dashboard-loader"
-                class="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#111111] z-10 transition-opacity duration-500"
-            >
-                <div
-                    class="w-12 h-12 border-2 border-white/10 border-t-white rounded-full animate-spin"
-                >
-                </div>
-                <p
-                    class="text-xs uppercase tracking-[0.3em] font-mono text-white/50 animate-pulse"
-                >
-                    Conectando con Power BI...
-                </p>
-            </div>
-
-            <!-- Fallback / Coming Soon screen -->
-            <div
-                id="dashboard-fallback"
-                class="hidden absolute inset-0 flex flex-col items-center justify-center gap-6 bg-[#111111] z-10 p-8 text-center"
-            >
-                <div
-                    class="p-6 bg-white/5 border border-white/10 rounded-full text-white/40 mb-2"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="40"
-                        height="40"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="animate-pulse text-white/60"
-                    >
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"
-                        ></rect>
-                        <line x1="9" y1="9" x2="15" y2="15"></line>
-                        <line x1="15" y1="9" x2="9" y2="15"></line>
-                    </svg>
-                </div>
-                <h4
-                    class="text-base md:text-lg font-mono uppercase tracking-[0.2em] text-white"
-                >
-                    Dashboard no disponible
-                </h4>
-                <p
-                    class="text-xs md:text-sm font-mono text-white/50 max-w-md leading-relaxed"
-                >
-                    Este dashboard está siendo actualizado o requiere
-                    configuración. Vuelve a intentarlo más tarde.
-                </p>
-            </div>
-
-            <!-- Iframe Container -->
-            <iframe
-                id="dashboard-iframe"
-                title="Visualization"
-                src=""
-                frameborder="0"
-                allowFullScreen="true"
-                class="w-full h-full opacity-0 transition-opacity duration-700"
-            ></iframe>
-        </div>
-    </div>
-</dialog>
-
 <style>
-    .active-toggle {
-        background-color: white;
-        color: black;
-    }
     #dashboard-modal {
         display: none;
     }
@@ -307,9 +133,7 @@ de el <span class="text-white font-bold border-b border-white/40 pb-0.5">cansanc
     gsap.registerPlugin(ScrollTrigger);
 
     function initAnimations() {
-        const projectContainers = gsap.utils.toArray(
-            ".project-container:not([style*='display: none'])",
-        );
+        const projectContainers = gsap.utils.toArray(".project-container");
 
         projectContainers.forEach((container: any) => {
             gsap.to(container, {
@@ -325,57 +149,6 @@ de el <span class="text-white font-bold border-b border-white/40 pb-0.5">cansanc
             });
         });
     }
-
-    // Toggle Logic
-    const toggles = document.querySelectorAll(".project-toggle");
-    const containers = document.querySelectorAll(".project-container");
-
-    toggles.forEach((toggle) => {
-        toggle.addEventListener("click", () => {
-            const category = toggle.getAttribute("data-category");
-
-            // Update buttons
-            toggles.forEach((t) => {
-                t.classList.remove("active-toggle");
-                t.classList.add("text-white/40");
-            });
-            toggle.classList.add("active-toggle");
-            toggle.classList.remove("text-white/40");
-
-            // Filter projects with animation
-            const tl = gsap.timeline();
-
-            // 1. Fade out current
-            tl.to(".project-container:not([style*='display: none'])", {
-                opacity: 0,
-                y: 20,
-                duration: 0.4,
-                ease: "power2.in",
-                onComplete: () => {
-                    // 2. Switch visibility
-                    containers.forEach((container: any) => {
-                        if (container.getAttribute("data-type") === category) {
-                            container.style.display = "block";
-                        } else {
-                            container.style.display = "none";
-                        }
-                    });
-
-                    // Reset scroll trigger
-                    ScrollTrigger.refresh();
-                },
-            });
-
-            // 3. Fade in new
-            tl.to(`.project-container[data-type="${category}"]`, {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: "expo.out",
-            });
-        });
-    });
 
     // Initial load
     initAnimations();

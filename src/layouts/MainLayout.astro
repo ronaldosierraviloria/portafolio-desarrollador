@@ -1,22 +1,71 @@
 ---
 import Preloader from "../components/Preloader.astro";
-interface Props {
-	title: string;
-}
+const { title, description = "Portafolio profesional de Ronaldo Sierra — Ingeniero de Sistemas, Desarrollador Full Stack Jr & Analista de Datos. Especializado en React, Python, AWS, bases de datos y soluciones web modernas." } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://ronaldosierra.dev");
+const siteImage = new URL("/Icon-R.png", canonicalURL).href;
 
-const { title } = Astro.props;
+const personSchema = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	"name": "Ronaldo Sierra",
+	"jobTitle": "Full Stack Developer Jr & Ingeniero de Sistemas",
+	"url": canonicalURL.href,
+	"sameAs": [
+		"https://github.com/ronaldosierraviloria"
+	],
+	"knowsAbout": [
+		"Software Development",
+		"Full Stack Development",
+		"React",
+		"Python",
+		"AWS",
+		"Laravel",
+		"Docker",
+		"Data Analysis",
+		"PostgreSQL",
+		"MySQL"
+	],
+	"description": description
+};
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
+
+		<!-- SEO Standard Meta Tags -->
+		<meta name="description" content={description} />
+		<meta name="keywords" content="Ronaldo Sierra, Desarrollador Full Stack, Ingeniero de Sistemas, React, Python, AWS, Laravel, Data Analyst, Portafolio" />
+		<meta name="author" content="Ronaldo Sierra" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={canonicalURL.href} />
+
+		<!-- Open Graph / Facebook / LinkedIn -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL.href} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={siteImage} />
+		<meta property="og:site_name" content="Ronaldo Sierra | Portfolio" />
+		<meta property="og:locale" content="es_ES" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL.href} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={siteImage} />
+
+		<!-- Icons -->
 		<link rel="icon" type="image/png" href="/Icon-R.png" />
 		<link rel="apple-touch-icon" href="/Icon-R.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+
+		<!-- Structured Data (JSON-LD) -->
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 	</head>
 	<body>
 		<Preloader />
@@ -27,12 +76,11 @@ const { title } = Astro.props;
 			import { gsap } from "gsap";
 			const translations = {
 				es: {
-					nav_projects: "Proyectos",
 					nav_about: "Sobre mí",
 					nav_contact: "Contacto",
 					hero_subtitle:
-						"Estudiante Ingeniería De Sistemas - Analista De Datos Junior.",
-					hero_projects_btn: "Proyecto Destacado",
+						"Ingeniero de Sistemas · Full Stack Developer Jr",
+					hero_projects_btn: "Ver Proyectos",
 					hero_cv_btn: "Descargar CV",
 					tech_title: "Tecnologías",
 					cv_modal_title: "Selecciona el Idioma",
@@ -40,11 +88,11 @@ const { title } = Astro.props;
 					cv_en: "CV en Inglés",
 					cv_close: "Cerrar",
 					about_quote:
-						'""Apasionado por los datos y el desarrollo. Transformando problemas complejos en soluciones elegantes a través de dashboards y analisis estadisticos.""',
+						'""Ingeniero de Sistemas especializado en desarrollo Full Stack — construyendo aplicaciones modernas con React, Python y AWS.""',
 					about_title_1: "SOBRE",
 					about_title_2: "MÍ.",
 					about_p1:
-						"Analista de Datos Junior con experiencia en soluciones BI y automatización. Dominio de SQL, Leguanje de programacion Python, Microsoft Excel, Power BI, Google Looker Studio,Google Sheets, Estadistica y Amazon Web Services (AWS). Con experiencia en el desarrollo de procesos ETL (Extract, Transform, Load), procesamiento de datos e integracions desde diversas fuentes y visualizacion de datos, creando Dashboards interactivos y funcionales.",
+						"Desarrollador de Software con enfoque Full Stack, especializado en construir aplicaciones web modernas y escalables. Trabajo con React en el frontend, Python y PHP en el backend, y gestiono infraestructura en AWS. Manejo bases de datos relacionales y NoSQL como MySQL, MongoDB, Firebase y Supabase. Me interesa crear productos que sean rápidos, mantenibles y con buena experiencia de usuario.",
 					about_p2:
 						"Mi objetivo es conectar el mundo del Data Science con el Desarrollo de Software, creando productos que no solo sean visualmente impactantes, sino también funcionalmente robustos.",
 					about_exp: "Años Exp.",
@@ -55,20 +103,31 @@ const { title } = Astro.props;
 					exp_edu_degree: "Ingeniería De Sistemas",
 					exp_edu_desc:
 						"Formación en tecnologías de la información con enfoque en análisis de datos y desarrollo de software.",
-					exp_job_title: "Pasante de Power Apps y Power Automate",
+					exp_job_title:
+						"Practicante & Pasante - Desarrollador De Software",
 					exp_job_desc:
-						"Como pasante de Power Apps y Power Automate en Springer Capital, aprenderé a crear aplicaciones internas, flujos automatizados y conectar SharePoint/Excel/Teams, además de depurar problemas de flujo. También aprenderé sobre arquitectura de aplicaciones low-code, automatización de flujos de trabajo, integración de datos y automatización de procesos empresariales.",
+						"Como practicante & pasante en la Corporación universitaria del Caribe CECAR fui el encargado de desarrollar un software institucional nuevo, estuve a cargo de la integración con las tecnologias de la universidad y despliegue dentro de los servidores para la Facultad de Ingeniería. Una plataforma institucional para la gestión, asignación y evaluación de trabajos de grado desarrollada en el Framework Laravel Php, Motor de Base de Datos PostgreSQL, Documentación y Manual del Usuario.",
 					proj_title: "Proyectos",
-					proj_featured: "Proyecto Destacado",
+					proj_featured: "Ver Proyectos",
 					proj_tools: "Herramientas :",
 					proj_analysis_label: "Análisis :",
 					skills_header: "Habilidades Tecnicas",
-					skills_cat_languages: "Lenguajes de Programación",
-					skills_cat_tools: "Herramientas de Análisis",
-					skills_cat_viz: "Visualización de Datos",
-					skills_cat_cloud: "Cloud Computing",
-					skills_cat_methods: "Estadística",
+					skills_cat_frontend: "Frontend",
+					skills_cat_backend: "Backend",
 					skills_cat_db: "Bases de Datos",
+					skills_cat_cloud: "Cloud & DevOps",
+					proj_01_title: "PLATAFORMA INSTITUCIONAL",
+					proj_01_subtitle: "GESTIÓN, ASIGNACIÓN Y EVALUACIÓN DE PROYECTOS DE GRADO",
+					proj_01_desc:
+						'La plataforma cuenta con una autenticación por Roles (Administrador,  Gestor, Evaluador), Donde cada uno tiene diferente funcionalidades. <span class="text-white font-bold border-b border-white/40 pb-0.5">Administrador:</span> Gestiona los usuarios, áreas, tipos de trabajo, estudiantes, Asigna Evaluadores, Tiene trazabilidad de cada proyecto. <span class="text-white font-bold border-b border-white/40 pb-0.5">Gestor:</span> Gestiona los documentos, Asigna rubricas de evaluación. <span class="text-white font-bold border-b border-white/40 pb-0.5">Evaluador:</span> Evalúa los proyectos. La plataforma esta basada en la Arquitectura <span class="text-white font-bold border-b border-white/40 pb-0.5">MVC (Model,View,Controller)</span> y cuenta con un sistema de notificaciones interno.',
+					proj_02_title: "DASHBOARD WEB PARA EMPRESA DE LOGÍSTICA",
+					proj_02_subtitle: "LOGÍSTICA",
+					proj_02_desc:
+						'El objetivo de este proyecto es desarrollar una aplicación web que sirva como un dashboard interactivo para una empresa de logística. La plataforma permitirá a los usuarios visualizar y analizar datos relacionados con el transporte de paquetería y envíos. Los datos serán cargados manualmente por el usuario en archivos Excel (xlsx, CSV) y la aplicación procesará la información para generar visualizaciones gráficas y estadísticas que faciliten el seguimiento de envíos y la toma de decisiones. La interfaz será intuitiva, permitiendo una navegación fluida entre las diferentes secciones del dashboard, ademas de ser totalmente responsive y adaptada a dispositivos moviles.',
+					proj_03_title: "CHATBOT WEB CON INTELIGENCIA ARTIFICIAL",
+					proj_03_subtitle: "AUTOMATIZACIÓN DE RECEPCIÓN DE PEDIDOS",
+					proj_03_desc:
+						'Chatbot web para automatizar el proceso de recepcion de pedidos basado en una arquitectura de <span class="text-white font-bold border-b border-white/40 pb-0.5">Microservicios</span>, ademas de estar contenerizado en <span class="text-white font-bold border-b border-white/40 pb-0.5">Docker</span>, respuestas automaticas mediante la <span class="text-white font-bold border-b border-white/40 pb-0.5">Inteligencia Artificial Gemini 3.5 Flash</span> modelo gratuito que solamente renderiza texto, perfecto para respuestas automaticas.',
 					proj_1_title: "OPTIMIZACIÓN DE PRECIOS DE UBER",
 					proj_1_subtitle: "EN LA CIUDAD DE NUEVA YORK",
 					proj_1_desc:
@@ -77,7 +136,7 @@ const { title } = Astro.props;
 					proj_2_subtitle: "CONJUNTO DE DATOS DE ECOMMERCE",
 					proj_2_desc:
 						'Un análisis exhaustivo centrado en el <span class="text-white font-bold border-b border-white/40 pb-0.5">comportamiento de compra de los clientes</span> utilizando el análisis RFM (Recencia, Frecuencia, Monetario) y el <span class="text-white font-bold border-b border-white/40 pb-0.5">Clúster K-Means</span> para agrupar a los clientes en distintos segmentos. Esto permitió al equipo de marketing <span class="text-white font-bold border-b border-white/40 pb-0.5">personalizar las campañas de forma eficaz</span>, lo que resultó en un <span class="text-white font-bold border-b border-white/40 pb-0.5">aumento del 20% en la retención</span>.',
-					proj_link_deck: "Presentación Completa",
+					proj_link_deck: "Ver Aplicación",
 					proj_link_tableau: "Dashboard en Tableau",
 					proj_link_colab: "Google Colab",
 					proj_link_study: "Caso de Estudio",
@@ -93,6 +152,13 @@ const { title } = Astro.props;
 					proj_4_subtitle: "FINANZAS CORPORATIVAS",
 					proj_4_desc:
 						'Un dashboard ejecutivo de alto nivel centrado en la <span class="text-white font-bold border-b border-white/40 pb-0.5">sostenibilidad financiera y gestión de riesgos</span>. Proporciona una <span class="text-white font-bold border-b border-white/40 pb-0.5">visión de 360 grados</span> de las finanzas de la empresa, permitiendo identificar rápidamente <span class="text-white font-bold border-b border-white/40 pb-0.5">oportunidades de eficiencia</span>.',
+					featured_title: "Proyecto en Curso",
+					featured_badge: "Proyecto Destacado",
+					featured_project_title: "AUTOMATIZACIÓN PIPELINE DE DATOS EN AWS",
+					featured_project_subtitle: "Automatización & Visualización de Datos",
+					featured_project_desc:
+						'Proyecto en etapa de desarrollo enfocado en la creación de un <span class="text-white font-bold border-b border-white/40 pb-0.5">pipeline de datos automatizado en AWS</span> para el análisis de datos y visualizacion en tiempo real.',
+					cert_title: "Certificados",
 					contact_main_title: "Contacto",
 					contact_email_label: "Correo",
 					contact_email_btn: "Enviar Email",
@@ -105,7 +171,7 @@ const { title } = Astro.props;
 					nav_about: "About me",
 					nav_contact: "Contact",
 					hero_subtitle:
-						"Systems Engineering Student - Junior Data Analyst.",
+						"Systems Engineering Student - Full Stack Developer Jr.",
 					hero_projects_btn: "Projects",
 					hero_cv_btn: "Download CV",
 					tech_title: "Technologies",
@@ -129,20 +195,30 @@ const { title } = Astro.props;
 					exp_edu_degree: "Systems Engineering",
 					exp_edu_desc:
 						"Information technology training with a focus on data analysis and software development.",
-					exp_job_title: "Power Apps And Power Automate Intern.",
+					exp_job_title: "Institutional Software Developer Intern.",
 					exp_job_desc:
-						"As a Power Apps and Power Automate intern at Springer Capital, I will learn how to create internal applications, automated flows, and connect SharePoint/Excel/Teams, as well as debug flow issues. I will also learn about low-code application architecture, workflow automation, data integration, and business process automation.",
+						"As an intern at the Caribbean University Corporation (CECAR), I was responsible for developing new institutional software. I oversaw its integration with the university’s technologies and its deployment on the servers for the School of Engineering. This institutional platform for the management, assignment, and evaluation of thesis projects was developed using the Laravel PHP framework and the PostgreSQL database engine, and included documentation and a user manual.",
 					proj_title: "Projects",
 					proj_featured: "Featured Project",
 					proj_tools: "Tools :",
 					proj_analysis_label: "Analysis :",
 					skills_header: "Technical Skills",
-					skills_cat_languages: "Programming Languages",
-					skills_cat_tools: "Data Analytic Tools",
-					skills_cat_viz: "Data Visualization",
-					skills_cat_cloud: "Cloud Computing",
-					skills_cat_methods: "Statistics",
+					skills_cat_frontend: "Frontend",
+					skills_cat_backend: "Backend",
 					skills_cat_db: "Databases",
+					skills_cat_cloud: "Cloud & DevOps",
+					proj_01_title: "INSTITUTIONAL PLATFORM",
+					proj_01_subtitle: "MANAGEMENT, ASSIGNMENT AND EVALUATION OF THESIS PROJECTS",
+					proj_01_desc:
+						'The platform features Role-based authentication (Administrator, Manager, Evaluator), each with different functionalities. <span class="text-white font-bold border-b border-white/40 pb-0.5">Administrator:</span> Manages users, areas, work types, students, assigns evaluators, and tracks each project. <span class="text-white font-bold border-b border-white/40 pb-0.5">Manager:</span> Manages documents, assigns evaluation rubrics. <span class="text-white font-bold border-b border-white/40 pb-0.5">Evaluator:</span> Evaluates projects. The platform is based on <span class="text-white font-bold border-b border-white/40 pb-0.5">MVC (Model, View, Controller)</span> architecture and includes an internal notification system.',
+					proj_02_title: "WEB DASHBOARD FOR LOGISTICS COMPANY",
+					proj_02_subtitle: "LOGISTICS",
+					proj_02_desc:
+						'The goal of this project is to develop a web application that serves as an interactive dashboard for a logistics company. The platform allows users to visualize and analyze data related to package transport and shipments. Data is manually uploaded by users via Excel files (xlsx, CSV), and the application processes the information to generate graphical visualizations and statistics that facilitate shipment tracking and decision-making. The interface is intuitive, allowing smooth navigation between different dashboard sections, and is fully responsive and adapted to mobile devices.',
+					proj_03_title: "WEB CHATBOT WITH ARTIFICIAL INTELLIGENCE",
+					proj_03_subtitle: "ORDER RECEPTION AUTOMATION",
+					proj_03_desc:
+						'Web chatbot to automate the order reception process based on a <span class="text-white font-bold border-b border-white/40 pb-0.5">Microservices</span> architecture, containerized with <span class="text-white font-bold border-b border-white/40 pb-0.5">Docker</span>, with automatic responses powered by <span class="text-white font-bold border-b border-white/40 pb-0.5">Google Gemini 3.5 Flash AI</span> — a free model that renders text only, perfect for automated responses.',
 					proj_1_title: "UBER PRICING OPTIMIZATION",
 					proj_1_subtitle: "IN NEW YORK CITY",
 					proj_1_desc:
@@ -151,7 +227,7 @@ const { title } = Astro.props;
 					proj_2_subtitle: "ECOMMERCE DATASET",
 					proj_2_desc:
 						'A comprehensive analysis focusing on <span class="text-white font-bold border-b border-white/40 pb-0.5">customer purchasing behavior</span> using RFM (Recency, Frequency, Monetary) analysis and <span class="text-white font-bold border-b border-white/40 pb-0.5">K-Means Clustering</span> to group customers into distinct segments. This allowed the marketing team to <span class="text-white font-bold border-b border-white/40 pb-0.5">tailor campaigns effectively</span>, resulting in a <span class="text-white font-bold border-b border-white/40 pb-0.5">20% increase in retention</span>.',
-					proj_link_deck: "Full Deck",
+					proj_link_deck: "Live Preview",
 					proj_link_tableau: "Tableau Dashboard",
 					proj_link_colab: "Google Colab",
 					proj_link_study: "Case Study",
@@ -167,6 +243,13 @@ const { title } = Astro.props;
 					proj_4_subtitle: "CORPORATE FINANCE",
 					proj_4_desc:
 						'A high-level executive dashboard focused on <span class="text-white font-bold border-b border-white/40 pb-0.5">financial sustainability and risk management</span>. It provides a <span class="text-white font-bold border-b border-white/40 pb-0.5">360-degree view</span> of company finances, enabling quick identification of <span class="text-white font-bold border-b border-white/40 pb-0.5">efficiency opportunities</span>.',
+					featured_title: "Current Project",
+					featured_badge: "Featured Project",
+					featured_project_title: "AWS DATA PIPELINE AUTOMATION",
+					featured_project_subtitle: "Data Automation & Visualization",
+					featured_project_desc:
+						'Project in development focused on creating an <span class="text-white font-bold border-b border-white/40 pb-0.5">automated data pipeline on AWS</span> for real-time data analysis and visualization.',
+					cert_title: "Certificates",
 					contact_main_title: "Contact",
 					contact_email_label: "Email",
 					contact_email_btn: "Send Email",
@@ -179,23 +262,27 @@ const { title } = Astro.props;
 
 			let currentLang = localStorage.getItem("lang") || "es";
 
-			function updateLanguage(lang) {
+			function updateLanguage(lang, animate = false) {
 				currentLang = lang;
 				localStorage.setItem("lang", lang);
 
 				// Update all elements with data-i18n attribute
 				document.querySelectorAll("[data-i18n]").forEach((el) => {
 					const key = el.getAttribute("data-i18n");
-					if (translations[lang][key]) {
-						// Simple fade animation with GSAP when changing
-						gsap.to(el, {
-							opacity: 0,
-							duration: 0.2,
-							onComplete: () => {
-								el.innerHTML = translations[lang][key];
-								gsap.to(el, { opacity: 1, duration: 0.2 });
-							},
-						});
+					if (translations[lang] && translations[lang][key]) {
+						if (animate) {
+							// Fade animation only when user manually toggles language
+							gsap.to(el, {
+								opacity: 0,
+								duration: 0.15,
+								onComplete: () => {
+									el.innerHTML = translations[lang][key];
+									gsap.to(el, { opacity: 1, duration: 0.15 });
+								},
+							});
+						} else {
+							el.innerHTML = translations[lang][key];
+						}
 					}
 				});
 
@@ -209,15 +296,15 @@ const { title } = Astro.props;
 				document.documentElement.lang = lang;
 			}
 
-			// Initialize
+			// Initialize on DOM ready without layout animation conflict
 			window.addEventListener("DOMContentLoaded", () => {
-				updateLanguage(currentLang);
+				updateLanguage(currentLang, false);
 			});
 
 			// Expose to window for the Navbar button
 			window.toggleLanguage = () => {
 				const newLang = currentLang === "es" ? "en" : "es";
-				updateLanguage(newLang);
+				updateLanguage(newLang, true);
 			};
 
 			// --- Cursor Logic ---
@@ -309,6 +396,13 @@ const { title } = Astro.props;
 		min-height: 100vh;
 		overflow-x: hidden;
 		scroll-behavior: smooth;
+	}
+	/* Modern Web Typography Guidance */
+	h1, h2, h3, h4 {
+		text-wrap: balance;
+	}
+	p, li, blockquote {
+		text-wrap: pretty;
 	}
 	.custom-cursor {
 		position: fixed;

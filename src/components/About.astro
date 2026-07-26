@@ -90,24 +90,31 @@ import profilePic from "../assets/Ronaldo-Image.jpg";
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Reveal animations for About section
-    const tlAbout = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#sobre-mi",
-            start: "top 75%",
-        },
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set([".about-left", ".about-right > *"], { autoAlpha: 1, y: 0 });
     });
 
-    tlAbout
-        .fromTo(
-            ".about-left",
-            { y: 100, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.2, ease: "expo.out" },
-        )
-        .fromTo(
-            ".about-right > *",
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "expo.out" },
-            "-=0.8",
-        );
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const tlAbout = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#sobre-mi",
+                start: "top 80%",
+            },
+        });
+
+        tlAbout
+            .fromTo(
+                ".about-left",
+                { y: 60, autoAlpha: 0 },
+                { y: 0, autoAlpha: 1, duration: 1.2, ease: "expo.out" },
+            )
+            .fromTo(
+                ".about-right > *",
+                { y: 40, autoAlpha: 0 },
+                { y: 0, autoAlpha: 1, duration: 1, stagger: 0.12, ease: "expo.out" },
+                "-=0.8",
+            );
+    });
 </script>
